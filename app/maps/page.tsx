@@ -22,7 +22,7 @@ export default function MapsPage() {
         <Button leftIcon={<FaFilter />} variant="outline" size="sm">
           Filters
         </Button>
-        <Button leftIcon={<FaLayers />} variant="outline" size="sm">
+        <Button leftIcon={<FaLayerGroup />} variant="outline" size="sm">
           Layers
         </Button>
       </HStack>
