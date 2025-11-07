@@ -1,5 +1,5 @@
 import { Container, Heading, Text, Box, HStack, Button } from '@chakra-ui/react'
-import { FaMapMarkerAlt, FaFilter, FaLayers } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaFilter, FaLayerGroup } from 'react-icons/fa'
 
 export default function MapsPage() {
   return (
