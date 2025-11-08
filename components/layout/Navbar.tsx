@@ -95,47 +95,47 @@ export const Navbar = () => {
             </Menu>
 
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaUtensils />} color="gray.700">
-                Restaurants
+              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.restaurant} />} color={textColor}>
+                {t('navigation.restaurants')}
               </MenuButton>
               <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/restaurants">Find Restaurants</MenuItem>
-                <MenuItem as={Link} href="/restaurants/cuisine">By Cuisine</MenuItem>
-                <MenuItem as={Link} href="/restaurants/nearby">Near Me</MenuItem>
+                <MenuItem as={Link} href="/restaurants">{t('navigation.findRestaurants')}</MenuItem>
+                <MenuItem as={Link} href="/restaurants/cuisine">{t('navigation.byCuisine')}</MenuItem>
+                <MenuItem as={Link} href="/restaurants/nearby">{t('navigation.nearMe')}</MenuItem>
               </MenuList>
             </Menu>
 
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaCamera />} color="gray.700">
-                Attractions
+              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.attractions} />} color={textColor}>
+                {t('navigation.attractions')}
               </MenuButton>
               <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/attractions">Things to Do</MenuItem>
-                <MenuItem as={Link} href="/attractions/tours">Tours & Tickets</MenuItem>
-                <MenuItem as={Link} href="/attractions/culture">Museums & Culture</MenuItem>
+                <MenuItem as={Link} href="/attractions">{t('navigation.thingsToDo')}</MenuItem>
+                <MenuItem as={Link} href="/attractions/tours">{t('navigation.toursAndTickets')}</MenuItem>
+                <MenuItem as={Link} href="/attractions/culture">{t('navigation.museumsAndCulture')}</MenuItem>
               </MenuList>
             </Menu>
 
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaRoute />} color="gray.700">
-                Plan Trip
+              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.route} />} color={textColor}>
+                {t('navigation.planTrip')}
               </MenuButton>
               <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/planner">Trip Planner</MenuItem>
-                <MenuItem as={Link} href="/generate">AI Generator</MenuItem>
-                <MenuItem as={Link} href="/planner/trips">My Trips</MenuItem>
+                <MenuItem as={Link} href="/planner">{t('navigation.tripPlanner')}</MenuItem>
+                <MenuItem as={Link} href="/generate">{t('navigation.aiGenerator')}</MenuItem>
+                <MenuItem as={Link} href="/planner/trips">{t('navigation.myTrips')}</MenuItem>
               </MenuList>
             </Menu>
 
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaUsers />} color="gray.700">
-                Community
+              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.community} />} color={textColor}>
+                {t('navigation.community')}
               </MenuButton>
               <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/community/feed">Travel Feed</MenuItem>
-                <MenuItem as={Link} href="/community/reviews">Reviews</MenuItem>
-                <MenuItem as={Link} href="/community/photos">Photos</MenuItem>
-                <MenuItem as={Link} href="/community/forums">Forums</MenuItem>
+                <MenuItem as={Link} href="/community/feed">{t('navigation.travelFeed')}</MenuItem>
+                <MenuItem as={Link} href="/community/reviews">{t('navigation.reviews')}</MenuItem>
+                <MenuItem as={Link} href="/community/photos">{t('navigation.photos')}</MenuItem>
+                <MenuItem as={Link} href="/community/forums">{t('navigation.forums')}</MenuItem>
               </MenuList>
             </Menu>
           </HStack>
