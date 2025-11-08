@@ -16,8 +16,8 @@ import {
   Collapse,
   Stack,
   VStack,
+  Icon as ChakraIcon,
 } from '@chakra-ui/react'
-import { Icon as ChakraIcon } from '@chakra-ui/react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { LanguageSelector } from '@/components/ui/LanguageSelector'
