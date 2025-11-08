@@ -39,11 +39,9 @@ export const Navbar = () => {
 
   return (
     <Box
-      bg="white"
-      _dark={{ bg: 'gray.900' }}
+      bg={bgColor}
       borderBottom="1px"
-      borderColor="gray.200"
-      _dark={{ borderColor: 'gray.700' }}
+      borderColor={borderColor}
       position="sticky"
       top={0}
       zIndex={1000}
