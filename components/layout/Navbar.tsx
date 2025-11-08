@@ -54,7 +54,7 @@ export const Navbar = () => {
           <IconButton
             display={{ base: 'flex', md: 'none' }}
             onClick={onToggle}
-            icon={isOpen ? <FaTimes /> : <FaBars />}
+            icon={<ChakraIcon as={isOpen ? iconMap.close : iconMap.menu} />}
             variant="ghost"
             aria-label="Toggle Navigation"
           />
