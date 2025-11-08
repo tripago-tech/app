@@ -72,8 +72,8 @@ export const Navbar = () => {
           {/* Desktop Navigation */}
           <HStack spacing={6} display={{ base: 'none', md: 'flex' }}>
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaMapMarkerAlt />} color="gray.700">
-                Destinations
+              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.destination} />} color={textColor}>
+                {t('navigation.destinations')}
               </MenuButton>
               <MenuList zIndex={1001}>
                 <MenuItem as={Link} href="/destinations">Browse All</MenuItem>
