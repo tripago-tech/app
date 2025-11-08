@@ -190,54 +190,54 @@ export const Navbar = () => {
 
         {/* Mobile Navigation */}
         <Collapse in={isOpen} animateOpacity>
-          <Box pb={4} display={{ md: 'none' }}>
+          <Box pb={4} display={{ md: 'none' }} bg={bgColor} color={textColor}>
             <VStack spacing={4} align="stretch">
               <VStack align="stretch" spacing={2}>
-                <Text fontWeight="bold" fontSize="sm" color="gray.600">Destinations</Text>
+                <Text fontWeight="bold" fontSize="sm" color={textColor}>{t('navigation.destinations')}</Text>
                 <Stack spacing={1} pl={4}>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/destinations">
-                    Browse All
+                    {t('navigation.browseAll')}
                   </Button>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/destinations/regions">
-                    By Region
+                    {t('navigation.byRegion')}
                   </Button>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/destinations/themes">
-                    By Theme
+                    {t('navigation.byTheme')}
                   </Button>
                 </Stack>
               </VStack>
 
               <VStack align="stretch" spacing={2}>
-                <Text fontWeight="bold" fontSize="sm" color="gray.600">Hotels</Text>
+                <Text fontWeight="bold" fontSize="sm" color={textColor}>{t('navigation.hotels')}</Text>
                 <Stack spacing={1} pl={4}>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/hotels">
-                    Search Hotels
+                    {t('navigation.searchHotels')}
                   </Button>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/hotels/compare">
-                    Compare Prices
+                    {t('navigation.comparePrices')}
                   </Button>
                 </Stack>
               </VStack>
 
               <VStack align="stretch" spacing={2}>
-                <Text fontWeight="bold" fontSize="sm" color="gray.600">Community</Text>
+                <Text fontWeight="bold" fontSize="sm" color={textColor}>{t('navigation.community')}</Text>
                 <Stack spacing={1} pl={4}>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/community/reviews">
-                    Reviews
+                    {t('navigation.reviews')}
                   </Button>
                   <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/community/photos">
-                    Photos
+                    {t('navigation.photos')}
                   </Button>
                 </Stack>
               </VStack>
-              
+
               {!isAuthenticated && (
                 <VStack spacing={2} pt={4}>
                   <Button variant="ghost" size="sm" w="full" as={Link} href="/auth/login">
-                    Login
+                    {t('common.login')}
                   </Button>
                   <Button colorScheme="primary" size="sm" w="full" as={Link} href="/auth/register">
-                    Sign Up
+                    {t('common.signup')}
                   </Button>
                 </VStack>
               )}
