@@ -146,7 +146,7 @@ export const Navbar = () => {
 
             <IconButton
               aria-label="Toggle color mode"
-              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+              icon={<ChakraIcon as={colorMode === 'light' ? iconMap.moon : iconMap.sun} />}
               onClick={toggleColorMode}
               variant="ghost"
               size="sm"
@@ -158,30 +158,30 @@ export const Navbar = () => {
                   <Avatar size="sm" name="User" />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem icon={<FaUser />} as={Link} href="/profile">
-                    Profile
+                  <MenuItem icon={<ChakraIcon as={iconMap.user} />} as={Link} href="/profile">
+                    {t('common.profile')}
                   </MenuItem>
-                  <MenuItem icon={<FaRoute />} as={Link} href="/profile/trips">
-                    My Trips
+                  <MenuItem icon={<ChakraIcon as={iconMap.route} />} as={Link} href="/profile/trips">
+                    {t('navigation.myTrips')}
                   </MenuItem>
-                  <MenuItem icon={<FaStar />} as={Link} href="/profile/reviews">
-                    My Reviews
+                  <MenuItem icon={<ChakraIcon as={iconMap.star} />} as={Link} href="/profile/reviews">
+                    {t('navigation.reviews')}
                   </MenuItem>
-                  <MenuItem icon={<FaUsers />} as={Link} href="/profile/rewards">
+                  <MenuItem icon={<ChakraIcon as={iconMap.trophy} />} as={Link} href="/profile/rewards">
                     Rewards
                   </MenuItem>
-                  <MenuItem icon={<FaSignOutAlt />}>
-                    Logout
+                  <MenuItem icon={<ChakraIcon as={iconMap.logout} />}>
+                    {t('common.logout')}
                   </MenuItem>
                 </MenuList>
               </Menu>
             ) : (
               <HStack spacing={2} display={{ base: 'none', sm: 'flex' }}>
                 <Button variant="ghost" size="sm" as={Link} href="/auth/login">
-                  Login
+                  {t('common.login')}
                 </Button>
                 <Button colorScheme="primary" size="sm" as={Link} href="/auth/register">
-                  Sign Up
+                  {t('common.signup')}
                 </Button>
               </HStack>
             )}
