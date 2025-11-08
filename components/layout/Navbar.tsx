@@ -17,24 +17,12 @@ import {
   Stack,
   VStack,
 } from '@chakra-ui/react'
-import { 
-  FaMoon, 
-  FaSun, 
-  FaUser, 
-  FaSignOutAlt, 
-  FaHotel, 
-  FaMapMarkerAlt, 
-  FaUtensils, 
-  FaCamera, 
-  FaRoute, 
-  FaUsers, 
-  FaStar,
-  FaBars,
-  FaTimes
-} from 'react-icons/fa'
+import { Icon as ChakraIcon } from '@chakra-ui/react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { LanguageSelector } from '@/components/ui/LanguageSelector'
+import { useTranslation } from '@/hooks/useTranslation'
+import { iconMap } from '@/utils/iconMap'
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode()
