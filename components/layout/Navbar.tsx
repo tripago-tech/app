@@ -84,8 +84,8 @@ export const Navbar = () => {
             </Menu>
 
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaHotel />} color="gray.700">
-                Hotels
+              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.hotel} />} color={textColor}>
+                {t('navigation.hotels')}
               </MenuButton>
               <MenuList zIndex={1001}>
                 <MenuItem as={Link} href="/hotels">Search Hotels</MenuItem>
