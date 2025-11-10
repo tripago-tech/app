@@ -191,9 +191,11 @@ export default function RestaurantsPage() {
                     </HStack>
                   </VStack>
 
-                  <Button colorScheme="secondary" w="full" size="sm" mt={4}>
-                    View Details
-                  </Button>
+                  <Link href={`/restaurants/${restaurant.id}`}>
+                    <Button colorScheme="secondary" w="full" size="sm" mt={4}>
+                      View Details
+                    </Button>
+                  </Link>
                 </Box>
               </Card>
             </Link>
