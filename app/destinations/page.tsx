@@ -16,7 +16,7 @@ import {
   InputGroup,
   InputLeftElement,
 } from '@chakra-ui/react'
-import { FaSearch, FaMapMarkerAlt, FaStar, FaHeart, FaCamera, FaUtensils, FaMountain, FaWave, FaCity, FaTree } from 'react-icons/fa'
+import { FaSearch, FaMapMarkerAlt, FaStar, FaHeart, FaCamera, FaUtensils, FaMountain, FaCity, FaTree } from 'react-icons/fa'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '@/components/ui/Card'
