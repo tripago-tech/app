@@ -65,29 +65,28 @@ const theme = extendTheme({
     Button: {
       baseStyle: {
         fontWeight: '600',
-        borderRadius: 'lg',
+        borderRadius: '8px',
+        fontSize: '14px',
         _focus: { boxShadow: 'outline' },
       },
       variants: {
         solid: {
           bg: 'primary.500',
           color: 'white',
-          _hover: { bg: 'primary.600', transform: 'translateY(-1px)', boxShadow: 'lg' },
+          _hover: { bg: 'primary.600', transform: 'translateY(-2px)', boxShadow: '0 4px 12px rgba(52, 224, 161, 0.3)' },
           _active: { transform: 'translateY(0)' },
           transition: 'all 0.2s',
         },
         secondary: {
           bg: 'secondary.500',
-          color: 'white',
-          _hover: { bg: 'secondary.600', transform: 'translateY(-1px)', boxShadow: 'lg' },
+          color: 'gray.900',
+          _hover: { bg: 'secondary.600', transform: 'translateY(-2px)', boxShadow: '0 4px 12px rgba(255, 215, 0, 0.3)' },
           _active: { transform: 'translateY(0)' },
           transition: 'all 0.2s',
         },
-        accent: {
-          bg: 'accent.500',
-          color: 'gray.900',
-          _hover: { bg: 'accent.600', transform: 'translateY(-1px)', boxShadow: 'lg' },
-          _active: { transform: 'translateY(0)' },
+        ghost: {
+          color: 'gray.600',
+          _hover: { bg: 'gray.100', color: 'gray.900' },
           transition: 'all 0.2s',
         },
       },
@@ -95,11 +94,12 @@ const theme = extendTheme({
     Card: {
       baseStyle: {
         container: {
-          borderRadius: 'xl',
-          boxShadow: 'sm',
-          _hover: { boxShadow: 'lg', transform: 'translateY(-2px)' },
+          borderRadius: '10px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+          _hover: { boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)', transform: 'translateY(-4px)' },
           transition: 'all 0.3s ease',
           bg: 'white',
+          overflow: 'hidden',
         },
       },
     },
@@ -107,8 +107,13 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'gray.50',
-        color: 'gray.900',
+        bg: 'white',
+        color: '#1C1C1C',
+        fontFamily: 'Inter, sans-serif',
+        lineHeight: '1.6',
+      },
+      html: {
+        bg: 'white',
       },
     },
   },
