@@ -175,7 +175,7 @@ const mockDestinations = [
 ]
 
 const themeIcons = {
-  beach: FaWave,
+  beach: FaCity,
   mountain: FaMountain,
   city: FaCity,
   culture: FaCamera,
