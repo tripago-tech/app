@@ -17,6 +17,7 @@ import {
   Stack,
   VStack,
   Icon as ChakraIcon,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
@@ -29,13 +30,6 @@ export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure()
   const { t } = useTranslation()
   const isAuthenticated = false
-
-  // Dynamic colors based on theme
-  const bgColor = { base: 'white', _dark: 'gray.900' }
-  const textColor = { base: 'gray.700', _dark: 'gray.200' }
-  const borderColor = { base: 'gray.200', _dark: 'gray.700' }
-  const hoverBg = { base: 'gray.50', _dark: 'gray.800' }
-  const headingColor = { base: 'gray.900', _dark: 'white' }
 
   return (
     <Box
