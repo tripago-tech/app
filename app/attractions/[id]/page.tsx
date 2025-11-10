@@ -369,9 +369,11 @@ export default function AttractionDetailPage() {
                           <Text fontWeight="semibold" fontSize="sm" mb={2}>Includes:</Text>
                           <Text fontSize="sm" color="gray.700">{tour.includes}</Text>
                         </Box>
-                        <Button colorScheme="secondary" w="full" size="sm">
-                          Book Now
-                        </Button>
+                        <Link href={`/attractions/${id}/book`}>
+                          <Button colorScheme="secondary" w="full" size="sm">
+                            Book Now
+                          </Button>
+                        </Link>
                       </VStack>
                     </Card>
                   ))}

@@ -306,9 +306,11 @@ export default function RestaurantDetailPage() {
                           <Text fontWeight="bold" color="primary.600">{dish.price}</Text>
                         </HStack>
                         <Text fontSize="sm" color="gray.700">{dish.description}</Text>
-                        <Button colorScheme="secondary" size="sm" w="full">
-                          Order Now
-                        </Button>
+                        <Link href={`/restaurants/${id}/order`}>
+                          <Button colorScheme="secondary" size="sm" w="full">
+                            Order Now
+                          </Button>
+                        </Link>
                       </VStack>
                     </Card>
                   ))}

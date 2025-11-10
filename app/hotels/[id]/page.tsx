@@ -43,6 +43,7 @@ import {
 import { Card } from '@/components/ui/Card'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter as useNextRouter } from 'next/router'
 
 const hotelDetails = {
   1: {
