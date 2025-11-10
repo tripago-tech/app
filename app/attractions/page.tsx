@@ -201,9 +201,11 @@ export default function AttractionsPage() {
                     </HStack>
                   </VStack>
 
-                  <Button colorScheme="primary" w="full" size="sm" mt={4}>
-                    View Details
-                  </Button>
+                  <Link href={`/attractions/${attraction.id}`}>
+                    <Button colorScheme="primary" w="full" size="sm" mt={4}>
+                      View Details
+                    </Button>
+                  </Link>
                 </Box>
               </Card>
             </Link>
