@@ -1,33 +1,45 @@
 'use client'
-import { Button as ChakraButton, ButtonProps } from '@chakra-ui/react'
+import { Box, ButtonProps, useMultiStyleConfig } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { forwardRef } from 'react'
 
-const MotionButton = motion(ChakraButton)
+const MotionBox = motion(Box)
 
 interface CustomButtonProps extends ButtonProps {
   animate?: boolean
 }
 
-export const Button = forwardRef<HTMLButtonElement, CustomButtonProps>(
+const BaseButton = forwardRef<HTMLButtonElement, CustomButtonProps>(
   ({ animate = true, children, ...props }, ref) => {
+    const styles = useMultiStyleConfig('Button', props)
+
+    const buttonProps = {
+      as: 'button',
+      ref,
+      ...props,
+      sx: styles,
+    }
+
     if (animate) {
       return (
-        <MotionButton
-          ref={ref}
+        <MotionBox
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          {...props}
+          {...buttonProps}
         >
           {children}
-        </MotionButton>
+        </MotionBox>
       )
     }
 
     return (
-      <ChakraButton ref={ref} {...props}>
+      <Box {...buttonProps}>
         {children}
-      </ChakraButton>
+      </Box>
     )
   }
 )
+
+BaseButton.displayName = 'Button'
+
+export { BaseButton as Button }
