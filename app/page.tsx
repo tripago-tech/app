@@ -284,6 +284,8 @@ export default function HomePage() {
               </Text>
             </VStack>
             <Button
+              as={Link}
+              href="/generate"
               size="lg"
               bg="white"
               color="secondary.600"
