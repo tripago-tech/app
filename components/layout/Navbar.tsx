@@ -104,9 +104,16 @@ export const Navbar = () => {
             </Menu>
 
             <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<ChakraIcon as={iconMap.attractions} />} color={textColor}>
-                {t('navigation.attractions')}
-              </MenuButton>
+              <MenuButton
+              as={Button}
+              variant="ghost"
+              size="sm"
+              leftIcon={<ChakraIcon as={iconMap.attractions} />}
+              color={textColor}
+              _hover={hoverBg}
+            >
+              {t('navigation.attractions')}
+            </MenuButton>
               <MenuList zIndex={1001}>
                 <MenuItem as={Link} href="/attractions">{t('navigation.thingsToDo')}</MenuItem>
                 <MenuItem as={Link} href="/attractions/tours">{t('navigation.toursAndTickets')}</MenuItem>
