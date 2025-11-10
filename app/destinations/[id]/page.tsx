@@ -206,12 +206,16 @@ export default function DestinationDetailPage() {
                 </Card>
 
                 <HStack spacing={4}>
-                  <Button colorScheme="primary" flex={1}>
-                    Search Hotels
-                  </Button>
-                  <Button colorScheme="secondary" flex={1}>
-                    Create My Trip
-                  </Button>
+                  <Link href="/hotels" flex={1}>
+                    <Button colorScheme="primary" w="full">
+                      Search Hotels
+                    </Button>
+                  </Link>
+                  <Link href="/planner" flex={1}>
+                    <Button colorScheme="secondary" w="full">
+                      Create My Trip
+                    </Button>
+                  </Link>
                 </HStack>
               </VStack>
             </TabPanel>
@@ -315,9 +319,11 @@ export default function DestinationDetailPage() {
                 <Card p={6} bg="green.50" _dark={{ bg: 'green.900' }}>
                   <Heading size="sm" mb={3}>More Information</Heading>
                   <Text color="gray.700" mb={4}>Need more details? Use AI to get personalized recommendations for {destination.name}.</Text>
-                  <Button colorScheme="secondary" leftIcon={<FaUsers />}>
-                    Plan Trip with AI
-                  </Button>
+                  <Link href="/generate">
+                    <Button colorScheme="secondary" leftIcon={<FaUsers />}>
+                      Plan Trip with AI
+                    </Button>
+                  </Link>
                 </Card>
               </VStack>
             </TabPanel>
