@@ -104,17 +104,17 @@ export const iconMap = {
   
   // Dining & Food
   restaurant: FaUtensils,
-  food: FaUtensilsSpoon,
-  
+  food: FaUtensils,
+
   // Community
   community: FaUsers,
   reviews: FaComment,
   photos: FaImage,
-  
+
   // Search & Filter
   search: FaSearch,
   filter: FaFilter,
-  
+
   // Content
   clock: FaClock,
   calendar: FaCalendar,
@@ -126,7 +126,7 @@ export const iconMap = {
   edit: FaEdit,
   delete: FaTrash,
   check: FaCheck,
-  close_icon: FaX,
+  close_icon: FaTimes,
   plus: FaPlus,
   minus: FaMinus,
   tags: FaTags,
