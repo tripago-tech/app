@@ -1,11 +1,11 @@
 'use client'
-import { 
-  Box, 
-  Container, 
-  Heading, 
-  Text, 
-  VStack, 
-  HStack, 
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  VStack,
+  HStack,
   SimpleGrid,
   Input,
   Button,
@@ -17,6 +17,7 @@ import {
   Select
 } from '@chakra-ui/react'
 import { FaSearch, FaMapMarkerAlt, FaStar, FaHeart, FaPlane, FaCalendarAlt, FaUsers } from 'react-icons/fa'
+import Link from 'next/link'
 import { Card } from '@/components/ui/Card'
 
 export default function HomePage() {
