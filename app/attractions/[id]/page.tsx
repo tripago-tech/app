@@ -17,20 +17,23 @@ import {
   TabPanel,
   Avatar,
   Flex,
+  Input,
+  Select,
 } from '@chakra-ui/react'
 import {
   FaStar,
   FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
   FaClock,
   FaDollarSign,
-  FaUsers,
+  FaPhone,
+  FaEnvelope,
   FaArrowLeft,
   FaHeart,
   FaShare,
-  FaTicketAlt,
   FaCamera,
+  FaCalendarAlt,
+  FaUsers,
+  FaTicketAlt,
 } from 'react-icons/fa'
 import { Card } from '@/components/ui/Card'
 import { useParams } from 'next/navigation'
@@ -46,62 +49,75 @@ const attractionDetails = {
     image: '🏛️',
     duration: '2-3 hours',
     price: '$15',
-    bestTime: '8:00 AM - 3:30 PM',
-    phone: '+66 2 623 5500',
-    email: 'contact@royalpalace.com',
-    address: 'Na Phra Lan Road, Khwaeng Phra Borom Maha Ratchawang, Bangkok',
-    description: 'The Grand Palace is the official residence of Thai kings since 1782. It\'s a stunning complex of ornate buildings with golden stupas and intricate Thai architecture.',
-    fullDescription: 'The Grand Palace is one of Thailand\'s most sacred places and a must-visit destination. Constructed in 1782, it served as the residence of Thai kings and contains the revered Temple of the Emerald Buddha. The complex showcases exquisite examples of traditional Thai architecture with its golden spires, ornate decorations, and ceremonial halls.',
+    description: 'The official residence of Thai kings since 1782 with stunning architecture',
+    fullDescription: 'The Grand Palace is the official residence of Thai Kings since 1782 and the most sacred Buddhist site in Thailand. The complex features elaborate architecture with intricate details, stunning golden decorations, and the revered Temple of the Emerald Buddha (Wat Phra Kaew). Visitors are mesmerized by the grandeur and spiritual significance of this iconic landmark.',
+    bestTime: 'Early morning (7-9 AM) to avoid crowds',
+    dressCode: 'Modest clothing required - covered knees and shoulders',
+    admission: {
+      adult: '$15',
+      child: '$8',
+      family: '$30 (2 adults + 2 children)',
+    },
+    hours: '8:30 AM - 3:30 PM (Closed during state events)',
     highlights: [
-      'Temple of the Emerald Buddha (Wat Phra Kaew)',
-      'Royal Residences',
-      'Intricately decorated walls and spires',
-      'Museum exhibits',
-      'Sacred ceremonial spaces',
-      'Stunning garden areas',
+      'Wat Phra Kaew - Temple of the Emerald Buddha',
+      'Chakri Maha Prasat Hall',
+      'Dusit Hall',
+      'Siwalai Gardens',
+      'Architectural details and golden decorations',
     ],
-    things_to_know: [
-      'Photography is allowed in most areas',
-      'Dress code: Shoulders and knees must be covered',
-      'Guided tours available in multiple languages',
-      'Allow 2-3 hours for full visit',
-      'Avoid midday heat (very crowded and hot)',
-      'Respectful behavior is required',
+    facilities: [
+      { name: 'Guided Tours', available: true },
+      { name: 'Audio Guides', available: true },
+      { name: 'Restrooms', available: true },
+      { name: 'Gift Shop', available: true },
+      { name: 'Photography Allowed', available: true },
     ],
-    tour_options: [
-      { name: 'Self-Guided Tour', duration: '2-3 hours', price: '$15', description: 'Explore at your own pace with map' },
-      { name: 'Guided Group Tour', duration: '3 hours', price: '$25', description: 'English-speaking guide included' },
-      { name: 'Sunrise Private Tour', duration: '4 hours', price: '$80', description: 'Small group, minimal crowds, guide included' },
-      { name: 'Sunset Photography Tour', duration: '3 hours', price: '$50', description: 'Perfect lighting for photography' },
+    tours: [
+      { name: 'Guided Historical Tour', duration: '2 hours', price: '$35', includes: 'Professional guide, headphones' },
+      { name: 'Photography Tour', duration: '3 hours', price: '$50', includes: 'Photo specialist guide, best angles' },
+      { name: 'Spiritual Experience Tour', duration: '2.5 hours', price: '$40', includes: 'Meditation, cultural insights' },
     ],
-    nearby_attractions: [
-      'Wat Pho (Temple of the Reclining Buddha) - 500m away',
-      'Sanam Luang Park - Adjacent',
-      'National Museum - 1km away',
-      'Wat Arun (Temple of the Dawn) - 1.5km away',
-    ],
+    contact: {
+      phone: '+66 2-623-5500',
+      email: 'info@palaces.thai.net',
+      address: 'Na Phra Lan Rd, Bangkok 10200, Thailand',
+    },
     reviews: [
       {
         author: 'Sarah M.',
         rating: 5,
-        date: '2024-01-20',
-        comment: 'Absolutely breathtaking! The architecture is stunning. Go early to beat the crowds!',
-        helpful: 234,
+        date: '2024-01-15',
+        comment: 'Absolutely stunning! The Grand Palace is a must-see. The architecture is breathtaking. Dress modestly and go early!',
+        helpful: 45,
       },
       {
         author: 'John D.',
         rating: 5,
-        date: '2024-01-15',
-        comment: 'A must-see in Bangkok. Respect the dress code and cultural significance.',
-        helpful: 156,
+        date: '2024-01-10',
+        comment: 'Incredible experience. Hire a guide for better insights into the history and significance.',
+        helpful: 32,
       },
       {
         author: 'Emma W.',
         rating: 4,
-        date: '2024-01-10',
-        comment: 'Amazing place but very crowded. Worth visiting early morning.',
-        helpful: 89,
+        date: '2024-01-05',
+        comment: 'Beautiful but can get very crowded. Early morning is best!',
+        helpful: 28,
       },
+    ],
+    tips: [
+      'Arrive early to beat the crowds',
+      'Wear modest clothing - covered knees and shoulders',
+      'Consider hiring a guide for deeper insights',
+      'Bring comfortable walking shoes',
+      'Respect the sacred site and dress appropriately',
+      'Photography is allowed but be respectful',
+    ],
+    nearby: [
+      'Wat Pho Temple (100m away)',
+      'Wat Mahathat (200m away)',
+      'Riverside restaurants and shops',
     ],
   },
   2: {
@@ -113,62 +129,67 @@ const attractionDetails = {
     image: '⛩️',
     duration: '1-2 hours',
     price: '$3',
-    bestTime: '5:00 AM - 6:00 PM',
-    phone: '+66 2 891 1752',
-    email: 'contact@watarun.com',
-    address: '34 Arun Amarin Road, Bangkok',
-    description: 'One of Thailand\'s most iconic temples, known for its stunning riverside location and ornate Khmer-style architecture.',
-    fullDescription: 'Wat Arun, also known as the Temple of the Dawn, is one of Bangkok\'s most recognizable landmarks. The temple features a distinctive central prang (tower) with intricate porcelain details. Its riverside location along the Chao Phraya River makes it especially magical at sunrise and sunset.',
+    description: 'Iconic riverside temple known for ornate architecture and stunning views',
+    fullDescription: 'Wat Arun, the Temple of the Dawn, is one of Thailand\'s most iconic temples, named after Aruna, the Hindu god of dawn. Located on the western bank of the Chao Phraya River, it features a stunning central prang (tower) decorated with colorful porcelain tiles. The temple is especially beautiful during sunrise and sunset.',
+    bestTime: 'Sunrise or sunset for stunning photos',
+    dressCode: 'Modest clothing required',
+    admission: {
+      adult: '$3',
+      child: 'Free',
+      family: '$8 (2 adults + 2 children)',
+    },
+    hours: '8:00 AM - 5:00 PM',
     highlights: [
-      'Iconic riverside tower',
-      'Intricate porcelain decorations',
-      'Panoramic river views',
-      'Peaceful atmosphere',
-      'Traditional Thai temple architecture',
-      'Excellent photography spots',
+      'Central Prang (tower)',
+      'Ornate porcelain decorations',
+      'River views',
+      'Buddha statues and altars',
+      'Sunrise/sunset views',
     ],
-    things_to_know: [
-      'Entrance fee: 100 baht ($3)',
-      'Open daily 5:00 AM - 6:00 PM',
-      'Dress modestly (shoulders and knees covered)',
-      'Climb the tower for panoramic views',
-      'Best visited during sunrise/sunset',
-      'Peaceful in early morning hours',
+    facilities: [
+      { name: 'Boat Crossing Service', available: true },
+      { name: 'Restrooms', available: true },
+      { name: 'Gift Shop', available: true },
+      { name: 'Climbing Tower', available: true },
+      { name: 'Photography Allowed', available: true },
     ],
-    tour_options: [
-      { name: 'Self-Guided Tour', duration: '1-2 hours', price: '$3', description: 'Explore independently' },
-      { name: 'Guided Temple Tour', duration: '2 hours', price: '$20', description: 'Learn about history and culture' },
-      { name: 'Sunrise Tour', duration: '2 hours', price: '$35', description: 'Early morning visit with guide' },
-      { name: 'River Boat Tour', duration: '3 hours', price: '$40', description: 'View from Chao Phraya River' },
+    tours: [
+      { name: 'Sunrise Photography Tour', duration: '2 hours', price: '$30', includes: 'River transport, breakfast' },
+      { name: 'Guided Temple Tour', duration: '1.5 hours', price: '$25', includes: 'Professional guide, insights' },
+      { name: 'Evening Sunset Tour', duration: '2 hours', price: '$35', includes: 'River view, refreshments' },
     ],
-    nearby_attractions: [
-      'Grand Palace - 1.5km away (across river)',
-      'Wat Pho - 1km away',
-      'River markets - Walking distance',
-      'Local restaurants and cafes',
-    ],
+    contact: {
+      phone: '+66 2-465-0926',
+      email: 'info@watarun.org',
+      address: 'Thanon Wang Doem, Bangkok 10700, Thailand',
+    },
     reviews: [
       {
-        author: 'Mike C.',
-        rating: 5,
-        date: '2024-01-18',
-        comment: 'Incredible temple! The sunrise views are unforgettable!',
-        helpful: 187,
-      },
-      {
-        author: 'Lisa P.',
+        author: 'Tom B.',
         rating: 5,
         date: '2024-01-12',
-        comment: 'Beautiful and serene. Worth the boat ride across the river!',
-        helpful: 142,
+        comment: 'Spectacular temple! The porcelain work is incredible. Best views at sunrise.',
+        helpful: 38,
       },
       {
-        author: 'Tom H.',
-        rating: 4,
+        author: 'Lisa K.',
+        rating: 5,
         date: '2024-01-08',
-        comment: 'Great temple with amazing views. Can get crowded at peak times.',
-        helpful: 71,
+        comment: 'One of Bangkok\'s must-see temples. Worth climbing the tower for views!',
+        helpful: 25,
       },
+    ],
+    tips: [
+      'Visit during sunrise for best photography',
+      'Climb the central tower for panoramic views',
+      'Wear comfortable shoes for climbing',
+      'Bring water and sun protection',
+      'River crossing costs extra (about $0.50)',
+    ],
+    nearby: [
+      'Grand Palace (across the river)',
+      'Wat Pho Temple (next to river)',
+      'Local restaurants and shops',
     ],
   },
 }
@@ -218,7 +239,7 @@ export default function AttractionDetailPage() {
           </HStack>
         </HStack>
 
-        {/* Image */}
+        {/* Image Section */}
         <Box
           w="full"
           h={{ base: '300px', md: '450px' }}
@@ -227,12 +248,11 @@ export default function AttractionDetailPage() {
           alignItems="center"
           justifyContent="center"
           borderRadius="lg"
-          fontSize="6xl"
         >
-          {attraction.image}
+          <Text fontSize="6xl">{attraction.image}</Text>
         </Box>
 
-        {/* Quick Info */}
+        {/* Rating and Quick Info */}
         <HStack spacing={4} pb={4} borderBottom="1px" borderColor="gray.200" flexWrap="wrap">
           <HStack>
             <Icon as={FaStar} color="accent.500" />
@@ -240,23 +260,24 @@ export default function AttractionDetailPage() {
             <Text color="gray.600">({attraction.reviews.toLocaleString()} reviews)</Text>
           </HStack>
           <Badge colorScheme="secondary">{attraction.type}</Badge>
-          <HStack spacing={1}>
+          <HStack spacing={1} fontSize="sm" color="gray.600">
             <Icon as={FaClock} />
-            <Text fontSize="sm">{attraction.duration}</Text>
+            <Text>{attraction.duration}</Text>
           </HStack>
-          <HStack spacing={1}>
+          <HStack spacing={1} fontSize="sm" color="primary.600">
             <Icon as={FaDollarSign} />
-            <Text fontSize="sm" fontWeight="bold">{attraction.price}</Text>
+            <Text fontWeight="bold">{attraction.price}</Text>
           </HStack>
         </HStack>
 
-        {/* Tabs */}
+        {/* Main Content Tabs */}
         <Tabs>
           <TabList>
             <Tab>Overview</Tab>
             <Tab>Tours & Tickets</Tab>
-            <Tab>Practical Info</Tab>
+            <Tab>Facilities</Tab>
             <Tab>Reviews</Tab>
+            <Tab>Location</Tab>
           </TabList>
 
           <TabPanels>
@@ -275,7 +296,7 @@ export default function AttractionDetailPage() {
                   <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                     {attraction.highlights.map((highlight) => (
                       <HStack key={highlight} spacing={3} align="start">
-                        <Icon as={FaCamera} color="accent.500" mt={1} flexShrink={0} />
+                        <Icon as={FaCamera} color="primary.500" mt={1} flexShrink={0} />
                         <Text>{highlight}</Text>
                       </HStack>
                     ))}
@@ -283,30 +304,45 @@ export default function AttractionDetailPage() {
                 </Box>
 
                 <Card p={6} bg="blue.50" _dark={{ bg: 'blue.900' }}>
-                  <Heading size="sm" mb={3}>Things to Know</Heading>
-                  <VStack align="start" spacing={2} fontSize="sm">
-                    {attraction.things_to_know.map((item) => (
-                      <HStack key={item} spacing={2}>
-                        <Icon as={FaTicketAlt} color="primary.500" w={4} h={4} />
-                        <Text>{item}</Text>
-                      </HStack>
-                    ))}
+                  <VStack align="start" spacing={3}>
+                    <Box>
+                      <Text fontWeight="semibold" color="gray.700">Best Time to Visit</Text>
+                      <Text>{attraction.bestTime}</Text>
+                    </Box>
+                    <Box>
+                      <Text fontWeight="semibold" color="gray.700">Dress Code</Text>
+                      <Text>{attraction.dressCode}</Text>
+                    </Box>
+                    <Box>
+                      <Text fontWeight="semibold" color="gray.700">Hours</Text>
+                      <Text>{attraction.hours}</Text>
+                    </Box>
                   </VStack>
                 </Card>
 
-                {attraction.nearby_attractions.length > 0 && (
-                  <Card p={6}>
-                    <Heading size="sm" mb={3}>Nearby Attractions</Heading>
-                    <VStack align="start" spacing={2} fontSize="sm">
-                      {attraction.nearby_attractions.map((nearby) => (
-                        <HStack key={nearby} spacing={2}>
-                          <Icon as={FaMapMarkerAlt} color="secondary.500" w={4} h={4} />
-                          <Text>{nearby}</Text>
-                        </HStack>
-                      ))}
-                    </VStack>
-                  </Card>
-                )}
+                <Box>
+                  <Heading size="md" mb={4}>Admission Prices</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
+                    <Card p={4}>
+                      <VStack align="start" spacing={2}>
+                        <Text fontWeight="bold">Adult</Text>
+                        <Text fontSize="2xl" color="primary.600">{attraction.admission.adult}</Text>
+                      </VStack>
+                    </Card>
+                    <Card p={4}>
+                      <VStack align="start" spacing={2}>
+                        <Text fontWeight="bold">Child</Text>
+                        <Text fontSize="2xl" color="primary.600">{attraction.admission.child}</Text>
+                      </VStack>
+                    </Card>
+                    <Card p={4}>
+                      <VStack align="start" spacing={2}>
+                        <Text fontWeight="bold">Family</Text>
+                        <Text fontSize="2xl" color="primary.600">{attraction.admission.family}</Text>
+                      </VStack>
+                    </Card>
+                  </SimpleGrid>
+                </Box>
               </VStack>
             </TabPanel>
 
@@ -315,24 +351,25 @@ export default function AttractionDetailPage() {
               <VStack spacing={4} align="stretch">
                 <Heading size="md">Available Tours & Tickets</Heading>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
-                  {attraction.tour_options.map((option, idx) => (
-                    <Card key={idx} p={6}>
+                  {attraction.tours.map((tour) => (
+                    <Card key={tour.name} p={6}>
                       <VStack align="start" spacing={3}>
-                        <Heading size="sm">{option.name}</Heading>
-                        <Text fontSize="sm" color="gray.600">
-                          {option.description}
-                        </Text>
-                        <HStack fontSize="sm" color="gray.600" spacing={4}>
+                        <Heading size="sm">{tour.name}</Heading>
+                        <HStack spacing={4} fontSize="sm" color="gray.600">
                           <HStack>
                             <Icon as={FaClock} />
-                            <Text>{option.duration}</Text>
+                            <Text>{tour.duration}</Text>
                           </HStack>
                           <HStack>
                             <Icon as={FaDollarSign} />
-                            <Text fontWeight="bold">{option.price}</Text>
+                            <Text fontWeight="bold" color="primary.600">{tour.price}</Text>
                           </HStack>
                         </HStack>
-                        <Button colorScheme="primary" w="full" size="sm">
+                        <Box>
+                          <Text fontWeight="semibold" fontSize="sm" mb={2}>Includes:</Text>
+                          <Text fontSize="sm" color="gray.700">{tour.includes}</Text>
+                        </Box>
+                        <Button colorScheme="secondary" w="full" size="sm">
                           Book Now
                         </Button>
                       </VStack>
@@ -342,55 +379,22 @@ export default function AttractionDetailPage() {
               </VStack>
             </TabPanel>
 
-            {/* Practical Info Tab */}
+            {/* Facilities Tab */}
             <TabPanel>
-              <VStack spacing={6} align="stretch">
-                <Card p={6}>
-                  <Heading size="sm" mb={4}>Hours & Contact</Heading>
-                  <VStack align="start" spacing={3}>
-                    <HStack spacing={2}>
-                      <Icon as={FaClock} color="primary.500" />
-                      <Box>
-                        <Text fontWeight="semibold">Hours</Text>
-                        <Text fontSize="sm">{attraction.bestTime}</Text>
-                      </Box>
-                    </HStack>
-                    <HStack spacing={2}>
-                      <Icon as={FaPhone} color="primary.500" />
-                      <Text>{attraction.phone}</Text>
-                    </HStack>
-                    <HStack spacing={2}>
-                      <Icon as={FaEnvelope} color="primary.500" />
-                      <Text>{attraction.email}</Text>
-                    </HStack>
-                    <HStack spacing={2}>
-                      <Icon as={FaMapMarkerAlt} color="primary.500" />
-                      <Text>{attraction.address}</Text>
-                    </HStack>
-                  </VStack>
-                </Card>
-
-                <Card p={6} bg="green.50" _dark={{ bg: 'green.900' }}>
-                  <Heading size="sm" mb={3}>Quick Facts</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3} fontSize="sm">
-                    <Box>
-                      <Text fontWeight="semibold" color="gray.700">Duration</Text>
-                      <Text>{attraction.duration}</Text>
-                    </Box>
-                    <Box>
-                      <Text fontWeight="semibold" color="gray.700">Entrance Fee</Text>
-                      <Text>{attraction.price}</Text>
-                    </Box>
-                    <Box>
-                      <Text fontWeight="semibold" color="gray.700">Best Time to Visit</Text>
-                      <Text>Early morning (less crowded)</Text>
-                    </Box>
-                    <Box>
-                      <Text fontWeight="semibold" color="gray.700">Type</Text>
-                      <Text>{attraction.type}</Text>
-                    </Box>
-                  </SimpleGrid>
-                </Card>
+              <VStack spacing={4} align="stretch">
+                <Heading size="md">Available Facilities</Heading>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                  {attraction.facilities.map((facility) => (
+                    <Card key={facility.name} p={4}>
+                      <HStack justify="space-between">
+                        <Text fontWeight="medium">{facility.name}</Text>
+                        <Badge colorScheme={facility.available ? 'green' : 'red'}>
+                          {facility.available ? 'Available' : 'Not Available'}
+                        </Badge>
+                      </HStack>
+                    </Card>
+                  ))}
+                </SimpleGrid>
               </VStack>
             </TabPanel>
 
@@ -400,7 +404,7 @@ export default function AttractionDetailPage() {
                 <HStack justify="space-between" align="start">
                   <Box>
                     <Heading size="md" mb={2}>Visitor Reviews</Heading>
-                    <Text color="gray.600">Based on {attraction.reviews.length} reviews</Text>
+                    <Text color="gray.600">Based on {attraction.reviews.length} verified reviews</Text>
                   </Box>
                   <Button colorScheme="primary">Write a Review</Button>
                 </HStack>
@@ -437,8 +441,72 @@ export default function AttractionDetailPage() {
                 </VStack>
               </VStack>
             </TabPanel>
+
+            {/* Location Tab */}
+            <TabPanel>
+              <VStack spacing={6} align="stretch">
+                <Box
+                  w="full"
+                  h="400px"
+                  bg="gray.100"
+                  borderRadius="lg"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Text color="gray.600">📍 Map View (Interactive map would load here)</Text>
+                </Box>
+
+                <Card p={6}>
+                  <VStack align="start" spacing={2}>
+                    <Heading size="sm">Contact & Address</Heading>
+                    <HStack spacing={2}>
+                      <Icon as={FaMapMarkerAlt} color="primary.500" />
+                      <Text>{attraction.contact.address}</Text>
+                    </HStack>
+                    <HStack spacing={2}>
+                      <Icon as={FaPhone} color="primary.500" />
+                      <Text>{attraction.contact.phone}</Text>
+                    </HStack>
+                    <HStack spacing={2}>
+                      <Icon as={FaEnvelope} color="primary.500" />
+                      <Text>{attraction.contact.email}</Text>
+                    </HStack>
+                  </VStack>
+                </Card>
+
+                <Box>
+                  <Heading size="sm" mb={3}>Nearby Attractions</Heading>
+                  <VStack align="start" spacing={2}>
+                    {attraction.nearby.map((place) => (
+                      <HStack key={place} spacing={2}>
+                        <Icon as={FaMapMarkerAlt} color="primary.500" />
+                        <Text>{place}</Text>
+                      </HStack>
+                    ))}
+                  </VStack>
+                </Box>
+              </VStack>
+            </TabPanel>
           </TabPanels>
         </Tabs>
+
+        {/* Traveler Tips */}
+        <Box borderTop="1px" borderColor="gray.200" pt={8}>
+          <VStack spacing={6} align="stretch">
+            <Heading size="md">Traveler Tips</Heading>
+            <VStack spacing={3} align="stretch">
+              {attraction.tips.map((tip, idx) => (
+                <Card key={idx} p={4} display="flex" alignItems="center">
+                  <HStack spacing={3}>
+                    <Icon as={FaStar} color="accent.500" />
+                    <Text>{tip}</Text>
+                  </HStack>
+                </Card>
+              ))}
+            </VStack>
+          </VStack>
+        </Box>
       </VStack>
     </Container>
   )
