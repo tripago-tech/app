@@ -188,35 +188,38 @@ export default function HomePage() {
 
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
               {[
-                { 
-                  name: 'Mandarin Oriental Bangkok', 
-                  location: 'Bangkok, Thailand', 
-                  price: '$189', 
+                {
+                  id: 1,
+                  name: 'Mandarin Oriental Bangkok',
+                  location: 'Bangkok, Thailand',
+                  price: '$189',
                   originalPrice: '$245',
-                  rating: 4.9, 
+                  rating: 4.9,
                   reviews: 2847,
                   amenities: ['Free WiFi', 'Pool', 'Spa', 'Restaurant']
                 },
-                { 
-                  name: 'Four Seasons Chiang Mai', 
-                  location: 'Chiang Mai, Thailand', 
-                  price: '$156', 
+                {
+                  id: 2,
+                  name: 'Four Seasons Chiang Mai',
+                  location: 'Chiang Mai, Thailand',
+                  price: '$156',
                   originalPrice: '$198',
-                  rating: 4.8, 
+                  rating: 4.8,
                   reviews: 1892,
                   amenities: ['Free WiFi', 'Pool', 'Garden', 'Breakfast']
                 },
-                { 
-                  name: 'Banyan Tree Phuket', 
-                  location: 'Phuket, Thailand', 
-                  price: '$267', 
+                {
+                  id: 3,
+                  name: 'Banyan Tree Phuket',
+                  location: 'Phuket, Thailand',
+                  price: '$267',
                   originalPrice: '$320',
-                  rating: 4.7, 
+                  rating: 4.7,
                   reviews: 1634,
                   amenities: ['Beach Access', 'Pool', 'Spa', 'Golf']
                 },
-              ].map((hotel, index) => (
-                <Card key={index} overflow="hidden" _hover={{ transform: 'translateY(-2px)' }}>
+              ].map((hotel) => (
+                <Card key={hotel.id} overflow="hidden" _hover={{ transform: 'translateY(-2px)' }}>
                   <Box h="240px" bg="gray.100" display="flex" alignItems="center" justifyContent="center">
                     <Text fontSize="4xl">🏨</Text>
                   </Box>
@@ -229,7 +232,7 @@ export default function HomePage() {
                           <Text color="gray.600" fontSize="sm">{hotel.location}</Text>
                         </HStack>
                       </VStack>
-                      
+
                       <HStack justify="space-between" w="full">
                         <HStack>
                           <Icon as={FaStar} color="accent.500" />
@@ -257,7 +260,7 @@ export default function HomePage() {
                           </HStack>
                           <Text fontSize="xs" color="gray.600">per night</Text>
                         </VStack>
-                        <Button colorScheme="primary" size="md">
+                        <Button as={Link} href={`/hotels/${hotel.id}`} colorScheme="primary" size="md">
                           View Deal
                         </Button>
                       </HStack>
