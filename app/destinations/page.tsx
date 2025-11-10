@@ -367,9 +367,11 @@ export default function DestinationsPage() {
                   </VStack>
 
                   {/* View Button */}
-                  <Button colorScheme="primary" w="full" size="sm">
-                    View Destination
-                  </Button>
+                  <Link href={`/destinations/${dest.id}`}>
+                    <Button colorScheme="primary" w="full" size="sm">
+                      View Destination
+                    </Button>
+                  </Link>
                 </Box>
               </Card>
             </Link>
