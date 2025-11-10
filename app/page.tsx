@@ -96,13 +96,13 @@ export default function HomePage() {
 
             {/* Quick Actions */}
             <HStack spacing={4} flexWrap="wrap" justify="center">
-              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaPlane />}>
+              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaPlane />} as={Link} href="/travel">
                 Flights
               </Button>
-              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaMapMarkerAlt />}>
+              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaMapMarkerAlt />} as={Link} href="/hotels">
                 Hotels
               </Button>
-              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaStar />}>
+              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaStar />} as={Link} href="/attractions">
                 Attractions
               </Button>
             </HStack>
