@@ -136,7 +136,7 @@ export const iconMap = {
   star: FaStar,
   ticket: FaTicketAlt,
   payment: FaCreditCard,
-  fire: FaFireAlt,
+  fire: FaFire,
   medal: FaMedal,
   trophy: FaTrophy,
   phone: FaPhone,
