@@ -135,37 +135,39 @@ export default function HomePage() {
 
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6} w="full">
             {[
-              { name: 'Bangkok', country: 'Thailand', price: '$45', rating: 4.8, reviews: 12847, image: '🏙️' },
-              { name: 'Chiang Mai', country: 'Thailand', price: '$35', rating: 4.7, reviews: 8934, image: '🏔️' },
-              { name: 'Phuket', country: 'Thailand', price: '$65', rating: 4.6, reviews: 15632, image: '🏝️' },
-              { name: 'Pattaya', country: 'Thailand', price: '$40', rating: 4.5, reviews: 9876, image: '🏖️' },
-            ].map((dest, index) => (
-              <Card key={index} overflow="hidden" cursor="pointer" _hover={{ transform: 'translateY(-4px)' }}>
-                <Box h="200px" bg="gray.100" display="flex" alignItems="center" justifyContent="center">
-                  <Text fontSize="6xl">{dest.image}</Text>
-                </Box>
-                <Box p={4}>
-                  <VStack align="start" spacing={2}>
-                    <HStack justify="space-between" w="full">
-                      <VStack align="start" spacing={0}>
-                        <Heading size="md">{dest.name}</Heading>
-                        <Text color="gray.600" fontSize="sm">{dest.country}</Text>
-                      </VStack>
-                      <Icon as={FaHeart} color="gray.300" _hover={{ color: 'red.400' }} cursor="pointer" />
-                    </HStack>
-                    <HStack justify="space-between" w="full">
-                      <HStack>
-                        <Icon as={FaStar} color="accent.500" />
-                        <Text fontWeight="bold">{dest.rating}</Text>
-                        <Text fontSize="sm" color="gray.500">({dest.reviews.toLocaleString()})</Text>
+              { id: 1, name: 'Bangkok', country: 'Thailand', price: '$45', rating: 4.8, reviews: 12847, image: '🏙️' },
+              { id: 2, name: 'Chiang Mai', country: 'Thailand', price: '$35', rating: 4.7, reviews: 8934, image: '🏔️' },
+              { id: 3, name: 'Phuket', country: 'Thailand', price: '$65', rating: 4.6, reviews: 15632, image: '🏝️' },
+              { id: 4, name: 'Pattaya', country: 'Thailand', price: '$40', rating: 4.5, reviews: 9876, image: '🏖️' },
+            ].map((dest) => (
+              <Link key={dest.id} href={`/destinations/${dest.id}`}>
+                <Card overflow="hidden" cursor="pointer" _hover={{ transform: 'translateY(-4px)' }}>
+                  <Box h="200px" bg="gray.100" display="flex" alignItems="center" justifyContent="center">
+                    <Text fontSize="6xl">{dest.image}</Text>
+                  </Box>
+                  <Box p={4}>
+                    <VStack align="start" spacing={2}>
+                      <HStack justify="space-between" w="full">
+                        <VStack align="start" spacing={0}>
+                          <Heading size="md">{dest.name}</Heading>
+                          <Text color="gray.600" fontSize="sm">{dest.country}</Text>
+                        </VStack>
+                        <Icon as={FaHeart} color="gray.300" _hover={{ color: 'red.400' }} cursor="pointer" />
                       </HStack>
-                      <Text fontWeight="bold" color="primary.600">
-                        From {dest.price}/night
-                      </Text>
-                    </HStack>
-                  </VStack>
-                </Box>
-              </Card>
+                      <HStack justify="space-between" w="full">
+                        <HStack>
+                          <Icon as={FaStar} color="accent.500" />
+                          <Text fontWeight="bold">{dest.rating}</Text>
+                          <Text fontSize="sm" color="gray.500">({dest.reviews.toLocaleString()})</Text>
+                        </HStack>
+                        <Text fontWeight="bold" color="primary.600">
+                          From {dest.price}/night
+                        </Text>
+                      </HStack>
+                    </VStack>
+                  </Box>
+                </Card>
+              </Link>
             ))}
           </SimpleGrid>
         </VStack>
