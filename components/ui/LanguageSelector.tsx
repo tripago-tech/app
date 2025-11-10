@@ -16,8 +16,16 @@ export const LanguageSelector = () => {
       value={language}
       onChange={(e) => changeLanguage(e.target.value as Language)}
       size="sm"
-      w="auto"
-      variant="ghost"
+      w="100px"
+      variant="filled"
+      bg="#F7F7F7"
+      color="#1C1C1C"
+      fontSize="14px"
+      fontWeight="500"
+      borderRadius="6px"
+      border="1px solid #E0E0E0"
+      _hover={{ bg: '#EFEFEF' }}
+      _focus={{ boxShadow: '0 0 0 1px #34E0A1' }}
     >
       {languages.map((lang) => (
         <option key={lang.code} value={lang.code}>
