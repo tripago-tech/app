@@ -1,5 +1,5 @@
 import { Container, Heading, Text, Box, HStack, Button } from '@chakra-ui/react'
-import { FaMapMarkerAlt, FaFilter, FaLayers } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaFilter, FaLayerGroup } from 'react-icons/fa'
 
 export default function MapsPage() {
   return (
@@ -22,7 +22,7 @@ export default function MapsPage() {
         <Button leftIcon={<FaFilter />} variant="outline" size="sm">
           Filters
         </Button>
-        <Button leftIcon={<FaLayers />} variant="outline" size="sm">
+        <Button leftIcon={<FaLayerGroup />} variant="outline" size="sm">
           Layers
         </Button>
       </HStack>

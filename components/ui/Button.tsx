@@ -1,25 +1,25 @@
 'use client'
 import { Button as ChakraButton, ButtonProps } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
-
-const MotionButton = motion(ChakraButton)
+import { forwardRef } from 'react'
 
 interface CustomButtonProps extends ButtonProps {
   animate?: boolean
 }
 
-export const Button = ({ animate = true, children, ...props }: CustomButtonProps) => {
-  if (animate) {
+export const Button = forwardRef<HTMLButtonElement, CustomButtonProps>(
+  ({ animate = true, children, ...props }, ref) => {
     return (
-      <MotionButton
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <ChakraButton
+        ref={ref}
+        _hover={animate ? { transform: 'translateY(-2px)', boxShadow: 'lg' } : {}}
+        _active={animate ? { transform: 'translateY(0)' } : {}}
+        transition="all 0.2s"
         {...props}
       >
         {children}
-      </MotionButton>
+      </ChakraButton>
     )
   }
+)
 
-  return <ChakraButton {...props}>{children}</ChakraButton>
-}
+Button.displayName = 'Button'

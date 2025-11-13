@@ -1,11 +1,11 @@
 'use client'
-import { 
-  Box, 
-  Container, 
-  Heading, 
-  Text, 
-  VStack, 
-  HStack, 
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  VStack,
+  HStack,
   SimpleGrid,
   Input,
   Button,
@@ -17,6 +17,7 @@ import {
   Select
 } from '@chakra-ui/react'
 import { FaSearch, FaMapMarkerAlt, FaStar, FaHeart, FaPlane, FaCalendarAlt, FaUsers } from 'react-icons/fa'
+import Link from 'next/link'
 import { Card } from '@/components/ui/Card'
 
 export default function HomePage() {
@@ -96,13 +97,13 @@ export default function HomePage() {
 
             {/* Quick Actions */}
             <HStack spacing={4} flexWrap="wrap" justify="center">
-              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaPlane />}>
+              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaPlane />} as={Link} href="/travel">
                 Flights
               </Button>
-              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaMapMarkerAlt />}>
+              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaMapMarkerAlt />} as={Link} href="/hotels">
                 Hotels
               </Button>
-              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaStar />}>
+              <Button variant="outline" colorScheme="whiteAlpha" leftIcon={<FaStar />} as={Link} href="/attractions">
                 Attractions
               </Button>
             </HStack>
@@ -135,37 +136,39 @@ export default function HomePage() {
 
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6} w="full">
             {[
-              { name: 'Bangkok', country: 'Thailand', price: '$45', rating: 4.8, reviews: 12847, image: '🏙️' },
-              { name: 'Chiang Mai', country: 'Thailand', price: '$35', rating: 4.7, reviews: 8934, image: '🏔️' },
-              { name: 'Phuket', country: 'Thailand', price: '$65', rating: 4.6, reviews: 15632, image: '🏝️' },
-              { name: 'Pattaya', country: 'Thailand', price: '$40', rating: 4.5, reviews: 9876, image: '🏖️' },
-            ].map((dest, index) => (
-              <Card key={index} overflow="hidden" cursor="pointer" _hover={{ transform: 'translateY(-4px)' }}>
-                <Box h="200px" bg="gray.100" display="flex" alignItems="center" justifyContent="center">
-                  <Text fontSize="6xl">{dest.image}</Text>
-                </Box>
-                <Box p={4}>
-                  <VStack align="start" spacing={2}>
-                    <HStack justify="space-between" w="full">
-                      <VStack align="start" spacing={0}>
-                        <Heading size="md">{dest.name}</Heading>
-                        <Text color="gray.600" fontSize="sm">{dest.country}</Text>
-                      </VStack>
-                      <Icon as={FaHeart} color="gray.300" _hover={{ color: 'red.400' }} cursor="pointer" />
-                    </HStack>
-                    <HStack justify="space-between" w="full">
-                      <HStack>
-                        <Icon as={FaStar} color="accent.500" />
-                        <Text fontWeight="bold">{dest.rating}</Text>
-                        <Text fontSize="sm" color="gray.500">({dest.reviews.toLocaleString()})</Text>
+              { id: 1, name: 'Bangkok', country: 'Thailand', price: '$45', rating: 4.8, reviews: 12847, image: '🏙️' },
+              { id: 2, name: 'Chiang Mai', country: 'Thailand', price: '$35', rating: 4.7, reviews: 8934, image: '🏔️' },
+              { id: 3, name: 'Phuket', country: 'Thailand', price: '$65', rating: 4.6, reviews: 15632, image: '🏝️' },
+              { id: 4, name: 'Pattaya', country: 'Thailand', price: '$40', rating: 4.5, reviews: 9876, image: '🏖️' },
+            ].map((dest) => (
+              <Link key={dest.id} href={`/destinations/${dest.id}`}>
+                <Card overflow="hidden" cursor="pointer" _hover={{ transform: 'translateY(-4px)' }}>
+                  <Box h="200px" bg="gray.100" display="flex" alignItems="center" justifyContent="center">
+                    <Text fontSize="6xl">{dest.image}</Text>
+                  </Box>
+                  <Box p={4}>
+                    <VStack align="start" spacing={2}>
+                      <HStack justify="space-between" w="full">
+                        <VStack align="start" spacing={0}>
+                          <Heading size="md">{dest.name}</Heading>
+                          <Text color="gray.600" fontSize="sm">{dest.country}</Text>
+                        </VStack>
+                        <Icon as={FaHeart} color="gray.300" _hover={{ color: 'red.400' }} cursor="pointer" />
                       </HStack>
-                      <Text fontWeight="bold" color="primary.600">
-                        From {dest.price}/night
-                      </Text>
-                    </HStack>
-                  </VStack>
-                </Box>
-              </Card>
+                      <HStack justify="space-between" w="full">
+                        <HStack>
+                          <Icon as={FaStar} color="accent.500" />
+                          <Text fontWeight="bold">{dest.rating}</Text>
+                          <Text fontSize="sm" color="gray.500">({dest.reviews.toLocaleString()})</Text>
+                        </HStack>
+                        <Text fontWeight="bold" color="primary.600">
+                          From {dest.price}/night
+                        </Text>
+                      </HStack>
+                    </VStack>
+                  </Box>
+                </Card>
+              </Link>
             ))}
           </SimpleGrid>
         </VStack>
@@ -186,35 +189,38 @@ export default function HomePage() {
 
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
               {[
-                { 
-                  name: 'Mandarin Oriental Bangkok', 
-                  location: 'Bangkok, Thailand', 
-                  price: '$189', 
+                {
+                  id: 1,
+                  name: 'Mandarin Oriental Bangkok',
+                  location: 'Bangkok, Thailand',
+                  price: '$189',
                   originalPrice: '$245',
-                  rating: 4.9, 
+                  rating: 4.9,
                   reviews: 2847,
                   amenities: ['Free WiFi', 'Pool', 'Spa', 'Restaurant']
                 },
-                { 
-                  name: 'Four Seasons Chiang Mai', 
-                  location: 'Chiang Mai, Thailand', 
-                  price: '$156', 
+                {
+                  id: 2,
+                  name: 'Four Seasons Chiang Mai',
+                  location: 'Chiang Mai, Thailand',
+                  price: '$156',
                   originalPrice: '$198',
-                  rating: 4.8, 
+                  rating: 4.8,
                   reviews: 1892,
                   amenities: ['Free WiFi', 'Pool', 'Garden', 'Breakfast']
                 },
-                { 
-                  name: 'Banyan Tree Phuket', 
-                  location: 'Phuket, Thailand', 
-                  price: '$267', 
+                {
+                  id: 3,
+                  name: 'Banyan Tree Phuket',
+                  location: 'Phuket, Thailand',
+                  price: '$267',
                   originalPrice: '$320',
-                  rating: 4.7, 
+                  rating: 4.7,
                   reviews: 1634,
                   amenities: ['Beach Access', 'Pool', 'Spa', 'Golf']
                 },
-              ].map((hotel, index) => (
-                <Card key={index} overflow="hidden" _hover={{ transform: 'translateY(-2px)' }}>
+              ].map((hotel) => (
+                <Card key={hotel.id} overflow="hidden" _hover={{ transform: 'translateY(-2px)' }}>
                   <Box h="240px" bg="gray.100" display="flex" alignItems="center" justifyContent="center">
                     <Text fontSize="4xl">🏨</Text>
                   </Box>
@@ -227,7 +233,7 @@ export default function HomePage() {
                           <Text color="gray.600" fontSize="sm">{hotel.location}</Text>
                         </HStack>
                       </VStack>
-                      
+
                       <HStack justify="space-between" w="full">
                         <HStack>
                           <Icon as={FaStar} color="accent.500" />
@@ -255,7 +261,7 @@ export default function HomePage() {
                           </HStack>
                           <Text fontSize="xs" color="gray.600">per night</Text>
                         </VStack>
-                        <Button colorScheme="primary" size="md">
+                        <Button as={Link} href={`/hotels/${hotel.id}`} colorScheme="primary" size="md">
                           View Deal
                         </Button>
                       </HStack>
@@ -279,6 +285,8 @@ export default function HomePage() {
               </Text>
             </VStack>
             <Button
+              as={Link}
+              href="/generate"
               size="lg"
               bg="white"
               color="secondary.600"

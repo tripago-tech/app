@@ -4,88 +4,112 @@ import {
   Container,
   Stack,
   Text,
-  Link,
+  Link as ChakraLink,
   HStack,
   Icon,
+  SimpleGrid,
 } from '@chakra-ui/react'
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
+import Link from 'next/link'
 
 export const Footer = () => {
   return (
     <Box
-      bg="gray.50"
-      _dark={{ bg: 'gray.900' }}
-      borderTop="1px"
-      borderColor="gray.200"
-      _dark={{ borderColor: 'gray.700' }}
+      bg="#F7F7F7"
+      borderTop="1px solid"
+      borderColor="#E0E0E0"
     >
-      <Container maxW="7xl" py={8}>
-        <Stack spacing={8} direction={{ base: 'column', md: 'row' }} justify="space-between">
+      <Container maxW="100%" px={{ base: 4, md: 8 }}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} py={12}>
+          {/* Brand Section */}
           <Stack spacing={4}>
             <HStack spacing={2}>
-              <Text fontSize="2xl">🔍</Text>
-              <Text fontSize="lg" fontWeight="bold" color="blue.600" _dark={{ color: 'blue.300' }}>
-                TripScope.AI
+              <Text fontSize="24px">🌍</Text>
+              <Text fontSize="16px" fontWeight="800" color="#34E0A1">
+                TripScope
               </Text>
             </HStack>
-            <Text color="gray.600" _dark={{ color: 'gray.400' }} maxW="md">
-              AI-powered hotel discovery and booking platform. Compare prices, 
-              read smart reviews, and find your perfect stay with confidence.
+            <Text color="#606060" fontSize="13px" lineHeight="1.6">
+              Discover your next adventure. Explore authentic travel experiences,
+              trusted reviews, and expert tips from real travelers.
             </Text>
           </Stack>
 
-          <Stack direction={{ base: 'column', md: 'row' }} spacing={8}>
-            <Stack spacing={2}>
-              <Text fontWeight="semibold">Discover</Text>
-              <Link href="/hotels" color="gray.600" _dark={{ color: 'gray.400' }}>
-                Hotels
-              </Link>
-              <Link href="/explore" color="gray.600" _dark={{ color: 'gray.400' }}>
-                Destinations
-              </Link>
-              <Link href="/compare" color="gray.600" _dark={{ color: 'gray.400' }}>
-                Compare Hotels
-              </Link>
-            </Stack>
-
-            <Stack spacing={2}>
-              <Text fontWeight="semibold">AI Features</Text>
-              <Link href="/generate" color="gray.600" _dark={{ color: 'gray.400' }}>
-                AI Trip Planner
-              </Link>
-              <Link href="/community" color="gray.600" _dark={{ color: 'gray.400' }}>
-                Smart Reviews
-              </Link>
-            </Stack>
-
-            <Stack spacing={2}>
-              <Text fontWeight="semibold">Support</Text>
-              <Link href="/help" color="gray.600" _dark={{ color: 'gray.400' }}>
-                Help Center
-              </Link>
-              <Link href="/contact" color="gray.600" _dark={{ color: 'gray.400' }}>
-                Contact Us
-              </Link>
-            </Stack>
+          {/* Discover Section */}
+          <Stack spacing={3}>
+            <Text fontWeight="700" fontSize="14px" color="#1C1C1C">
+              Discover
+            </Text>
+            <ChakraLink as={Link} href="/hotels" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Hotels
+            </ChakraLink>
+            <ChakraLink as={Link} href="/destinations" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Destinations
+            </ChakraLink>
+            <ChakraLink as={Link} href="/attractions" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Things to Do
+            </ChakraLink>
+            <ChakraLink as={Link} href="/restaurants" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Restaurants
+            </ChakraLink>
           </Stack>
-        </Stack>
 
+          {/* Features Section */}
+          <Stack spacing={3}>
+            <Text fontWeight="700" fontSize="14px" color="#1C1C1C">
+              Features
+            </Text>
+            <ChakraLink as={Link} href="/planner" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Trip Planner
+            </ChakraLink>
+            <ChakraLink as={Link} href="/generate" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              AI Generator
+            </ChakraLink>
+            <ChakraLink as={Link} href="/community" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Community
+            </ChakraLink>
+            <ChakraLink as={Link} href="/maps" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Maps
+            </ChakraLink>
+          </Stack>
+
+          {/* Support Section */}
+          <Stack spacing={3}>
+            <Text fontWeight="700" fontSize="14px" color="#1C1C1C">
+              Support
+            </Text>
+            <ChakraLink href="#" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Help Center
+            </ChakraLink>
+            <ChakraLink href="#" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Contact Us
+            </ChakraLink>
+            <ChakraLink href="#" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Privacy Policy
+            </ChakraLink>
+            <ChakraLink href="#" color="#606060" fontSize="13px" _hover={{ color: '#34E0A1' }}>
+              Terms of Service
+            </ChakraLink>
+          </Stack>
+        </SimpleGrid>
+
+        {/* Bottom Footer */}
         <Stack
           direction={{ base: 'column', md: 'row' }}
           justify="space-between"
           align="center"
-          pt={8}
-          borderTop="1px"
-          borderColor="gray.200"
-          _dark={{ borderColor: 'gray.700' }}
+          py={6}
+          borderTop="1px solid"
+          borderColor="#E0E0E0"
+          spacing={4}
         >
-          <Text color="gray.600" _dark={{ color: 'gray.400' }}>
-            © 2024 TripScope.AI. All rights reserved.
+          <Text color="#606060" fontSize="12px">
+            © 2024 TripScope. All rights reserved.
           </Text>
           <HStack spacing={4}>
-            <Icon as={FaFacebook} w={5} h={5} color="gray.400" cursor="pointer" />
-            <Icon as={FaTwitter} w={5} h={5} color="gray.400" cursor="pointer" />
-            <Icon as={FaInstagram} w={5} h={5} color="gray.400" cursor="pointer" />
+            <Icon as={FaFacebook} w={4} h={4} color="#34E0A1" cursor="pointer" _hover={{ opacity: 0.8 }} transition="opacity 0.2s" />
+            <Icon as={FaTwitter} w={4} h={4} color="#34E0A1" cursor="pointer" _hover={{ opacity: 0.8 }} transition="opacity 0.2s" />
+            <Icon as={FaInstagram} w={4} h={4} color="#34E0A1" cursor="pointer" _hover={{ opacity: 0.8 }} transition="opacity 0.2s" />
           </HStack>
         </Stack>
       </Container>

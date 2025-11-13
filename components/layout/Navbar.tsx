@@ -16,132 +16,61 @@ import {
   Collapse,
   Stack,
   VStack,
+  Icon as ChakraIcon,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
-import { 
-  FaMoon, 
-  FaSun, 
-  FaUser, 
-  FaSignOutAlt, 
-  FaHotel, 
-  FaMapMarkerAlt, 
-  FaUtensils, 
-  FaCamera, 
-  FaRoute, 
-  FaUsers, 
-  FaStar,
-  FaBars,
-  FaTimes
-} from 'react-icons/fa'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { LanguageSelector } from '@/components/ui/LanguageSelector'
+import { useTranslation } from '@/hooks/useTranslation'
+import { iconMap } from '@/utils/iconMap'
 
 export const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   const { isOpen, onToggle } = useDisclosure()
+  const { t } = useTranslation()
   const isAuthenticated = false
 
   return (
     <Box
       bg="white"
-      _dark={{ bg: 'gray.900' }}
-      borderBottom="1px"
-      borderColor="gray.200"
-      _dark={{ borderColor: 'gray.700' }}
+      borderBottom="1px solid"
+      borderColor="#E0E0E0"
       position="sticky"
       top={0}
       zIndex={1000}
+      boxShadow="0 1px 3px rgba(0, 0, 0, 0.05)"
     >
-      <Container maxW="7xl">
-        <Flex h={16} alignItems="center" justifyContent="space-between">
-          {/* Mobile menu button */}
-          <IconButton
-            display={{ base: 'flex', md: 'none' }}
-            onClick={onToggle}
-            icon={isOpen ? <FaTimes /> : <FaBars />}
-            variant="ghost"
-            aria-label="Toggle Navigation"
-          />
-
+      <Container maxW="100%" px={0}>
+        {/* Top Navigation Bar */}
+        <Flex h="60px" alignItems="center" justifyContent="space-between" px={{ base: 4, md: 8 }}>
           {/* Logo */}
           <Link href="/">
-            <HStack spacing={2}>
-              <Text fontSize="2xl">🔍</Text>
-              <Text fontSize="xl" fontWeight="bold" color="primary.600">
-                TripScope.AI
+            <HStack spacing={2} cursor="pointer">
+              <Text fontSize="24px">🌍</Text>
+              <Text fontSize="18px" fontWeight="800" color="#34E0A1">
+                TripScope
               </Text>
             </HStack>
           </Link>
 
-          {/* Desktop Navigation */}
-          <HStack spacing={6} display={{ base: 'none', md: 'flex' }}>
-            <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaMapMarkerAlt />} color="gray.700">
-                Destinations
-              </MenuButton>
-              <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/destinations">Browse All</MenuItem>
-                <MenuItem as={Link} href="/destinations/regions">By Region</MenuItem>
-                <MenuItem as={Link} href="/destinations/themes">By Theme</MenuItem>
-                <MenuItem as={Link} href="/maps">Interactive Map</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaHotel />} color="gray.700">
-                Hotels
-              </MenuButton>
-              <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/hotels">Search Hotels</MenuItem>
-                <MenuItem as={Link} href="/hotels/compare">Compare Prices</MenuItem>
-                <MenuItem as={Link} href="/hotels/top-rated">Top Rated</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaUtensils />} color="gray.700">
-                Restaurants
-              </MenuButton>
-              <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/restaurants">Find Restaurants</MenuItem>
-                <MenuItem as={Link} href="/restaurants/cuisine">By Cuisine</MenuItem>
-                <MenuItem as={Link} href="/restaurants/nearby">Near Me</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaCamera />} color="gray.700">
-                Attractions
-              </MenuButton>
-              <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/attractions">Things to Do</MenuItem>
-                <MenuItem as={Link} href="/attractions/tours">Tours & Tickets</MenuItem>
-                <MenuItem as={Link} href="/attractions/culture">Museums & Culture</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaRoute />} color="gray.700">
-                Plan Trip
-              </MenuButton>
-              <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/planner">Trip Planner</MenuItem>
-                <MenuItem as={Link} href="/generate">AI Generator</MenuItem>
-                <MenuItem as={Link} href="/planner/trips">My Trips</MenuItem>
-              </MenuList>
-            </Menu>
-
-            <Menu>
-              <MenuButton as={Button} variant="ghost" size="sm" leftIcon={<FaUsers />} color="gray.700">
-                Community
-              </MenuButton>
-              <MenuList zIndex={1001}>
-                <MenuItem as={Link} href="/community/feed">Travel Feed</MenuItem>
-                <MenuItem as={Link} href="/community/reviews">Reviews</MenuItem>
-                <MenuItem as={Link} href="/community/photos">Photos</MenuItem>
-                <MenuItem as={Link} href="/community/forums">Forums</MenuItem>
-              </MenuList>
-            </Menu>
+          {/* Desktop Navigation - Hidden on mobile */}
+          <HStack spacing={8} display={{ base: 'none', lg: 'flex' }} flex={1} justify="center" mx={8}>
+            <ChakraLink as={Link} href="/hotels" _hover={{ color: '#34E0A1' }} fontSize="14px" fontWeight="500" color="#1C1C1C">
+              {t('navigation.hotels')}
+            </ChakraLink>
+            <ChakraLink as={Link} href="/attractions" _hover={{ color: '#34E0A1' }} fontSize="14px" fontWeight="500" color="#1C1C1C">
+              {t('navigation.attractions')}
+            </ChakraLink>
+            <ChakraLink as={Link} href="/restaurants" _hover={{ color: '#34E0A1' }} fontSize="14px" fontWeight="500" color="#1C1C1C">
+              {t('navigation.restaurants')}
+            </ChakraLink>
+            <ChakraLink as={Link} href="/destinations" _hover={{ color: '#34E0A1' }} fontSize="14px" fontWeight="500" color="#1C1C1C">
+              {t('navigation.destinations')}
+            </ChakraLink>
+            <ChakraLink as={Link} href="/community" _hover={{ color: '#34E0A1' }} fontSize="14px" fontWeight="500" color="#1C1C1C">
+              {t('navigation.community')}
+            </ChakraLink>
           </HStack>
 
           {/* Right side items */}
@@ -150,98 +79,96 @@ export const Navbar = () => {
 
             <IconButton
               aria-label="Toggle color mode"
-              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+              icon={<ChakraIcon as={colorMode === 'light' ? iconMap.moon : iconMap.sun} />}
               onClick={toggleColorMode}
               variant="ghost"
               size="sm"
+              color="#1C1C1C"
+              _hover={{ bg: '#F7F7F7' }}
             />
 
             {isAuthenticated ? (
               <Menu>
-                <MenuButton>
-                  <Avatar size="sm" name="User" />
-                </MenuButton>
+                <MenuButton as={Avatar} size="sm" name="User" cursor="pointer" />
                 <MenuList>
-                  <MenuItem icon={<FaUser />} as={Link} href="/profile">
-                    Profile
+                  <MenuItem icon={<ChakraIcon as={iconMap.user} />} as={Link} href="/profile">
+                    {t('common.profile')}
                   </MenuItem>
-                  <MenuItem icon={<FaRoute />} as={Link} href="/profile/trips">
-                    My Trips
+                  <MenuItem icon={<ChakraIcon as={iconMap.route} />} as={Link} href="/profile/trips">
+                    {t('navigation.myTrips')}
                   </MenuItem>
-                  <MenuItem icon={<FaStar />} as={Link} href="/profile/reviews">
-                    My Reviews
+                  <MenuItem icon={<ChakraIcon as={iconMap.star} />} as={Link} href="/profile/reviews">
+                    {t('navigation.reviews')}
                   </MenuItem>
-                  <MenuItem icon={<FaUsers />} as={Link} href="/profile/rewards">
+                  <MenuItem icon={<ChakraIcon as={iconMap.trophy} />} as={Link} href="/profile/rewards">
                     Rewards
                   </MenuItem>
-                  <MenuItem icon={<FaSignOutAlt />}>
-                    Logout
+                  <MenuItem icon={<ChakraIcon as={iconMap.logout} />}>
+                    {t('common.logout')}
                   </MenuItem>
                 </MenuList>
               </Menu>
             ) : (
-              <HStack spacing={2} display={{ base: 'none', sm: 'flex' }}>
-                <Button variant="ghost" size="sm" as={Link} href="/auth/login">
-                  Login
+              <HStack spacing={2} display={{ base: 'none', md: 'flex' }}>
+                <Button variant="ghost" size="sm" as={Link} href="/auth/login" color="#1C1C1C" fontSize="14px">
+                  {t('common.login')}
                 </Button>
-                <Button colorScheme="primary" size="sm" as={Link} href="/auth/register">
-                  Sign Up
+                <Button bg="#34E0A1" color="white" size="sm" as={Link} href="/auth/register" fontSize="14px" _hover={{ bg: '#2CB98F' }}>
+                  {t('common.signup')}
                 </Button>
               </HStack>
             )}
+
+            {/* Mobile menu button */}
+            <IconButton
+              display={{ base: 'flex', lg: 'none' }}
+              onClick={onToggle}
+              icon={<ChakraIcon as={isOpen ? iconMap.close : iconMap.menu} />}
+              variant="ghost"
+              aria-label="Toggle Navigation"
+              color="#1C1C1C"
+              _hover={{ bg: '#F7F7F7' }}
+            />
           </HStack>
         </Flex>
 
         {/* Mobile Navigation */}
         <Collapse in={isOpen} animateOpacity>
-          <Box pb={4} display={{ md: 'none' }}>
-            <VStack spacing={4} align="stretch">
-              <VStack align="stretch" spacing={2}>
-                <Text fontWeight="bold" fontSize="sm" color="gray.600">Destinations</Text>
-                <Stack spacing={1} pl={4}>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/destinations">
-                    Browse All
-                  </Button>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/destinations/regions">
-                    By Region
-                  </Button>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/destinations/themes">
-                    By Theme
-                  </Button>
-                </Stack>
-              </VStack>
+          <Box pb={4} display={{ lg: 'none' }} bg="white" borderTop="1px solid #E0E0E0">
+            <VStack spacing={0} align="stretch">
+              <Box px={4} py={3}>
+                <ChakraLink as={Link} href="/hotels" display="block" fontSize="14px" fontWeight="500" color="#1C1C1C" py={2} _hover={{ color: '#34E0A1' }}>
+                  {t('navigation.hotels')}
+                </ChakraLink>
+              </Box>
+              <Box px={4} py={3} borderTop="1px solid #E0E0E0">
+                <ChakraLink as={Link} href="/attractions" display="block" fontSize="14px" fontWeight="500" color="#1C1C1C" py={2} _hover={{ color: '#34E0A1' }}>
+                  {t('navigation.attractions')}
+                </ChakraLink>
+              </Box>
+              <Box px={4} py={3} borderTop="1px solid #E0E0E0">
+                <ChakraLink as={Link} href="/restaurants" display="block" fontSize="14px" fontWeight="500" color="#1C1C1C" py={2} _hover={{ color: '#34E0A1' }}>
+                  {t('navigation.restaurants')}
+                </ChakraLink>
+              </Box>
+              <Box px={4} py={3} borderTop="1px solid #E0E0E0">
+                <ChakraLink as={Link} href="/destinations" display="block" fontSize="14px" fontWeight="500" color="#1C1C1C" py={2} _hover={{ color: '#34E0A1' }}>
+                  {t('navigation.destinations')}
+                </ChakraLink>
+              </Box>
+              <Box px={4} py={3} borderTop="1px solid #E0E0E0">
+                <ChakraLink as={Link} href="/community" display="block" fontSize="14px" fontWeight="500" color="#1C1C1C" py={2} _hover={{ color: '#34E0A1' }}>
+                  {t('navigation.community')}
+                </ChakraLink>
+              </Box>
 
-              <VStack align="stretch" spacing={2}>
-                <Text fontWeight="bold" fontSize="sm" color="gray.600">Hotels</Text>
-                <Stack spacing={1} pl={4}>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/hotels">
-                    Search Hotels
-                  </Button>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/hotels/compare">
-                    Compare Prices
-                  </Button>
-                </Stack>
-              </VStack>
-
-              <VStack align="stretch" spacing={2}>
-                <Text fontWeight="bold" fontSize="sm" color="gray.600">Community</Text>
-                <Stack spacing={1} pl={4}>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/community/reviews">
-                    Reviews
-                  </Button>
-                  <Button variant="ghost" size="sm" justifyContent="flex-start" as={Link} href="/community/photos">
-                    Photos
-                  </Button>
-                </Stack>
-              </VStack>
-              
               {!isAuthenticated && (
-                <VStack spacing={2} pt={4}>
-                  <Button variant="ghost" size="sm" w="full" as={Link} href="/auth/login">
-                    Login
+                <VStack spacing={2} p={4} borderTop="1px solid #E0E0E0">
+                  <Button variant="ghost" size="sm" w="full" as={Link} href="/auth/login" color="#1C1C1C">
+                    {t('common.login')}
                   </Button>
-                  <Button colorScheme="primary" size="sm" w="full" as={Link} href="/auth/register">
-                    Sign Up
+                  <Button bg="#34E0A1" color="white" size="sm" w="full" as={Link} href="/auth/register" _hover={{ bg: '#2CB98F' }}>
+                    {t('common.signup')}
                   </Button>
                 </VStack>
               )}
